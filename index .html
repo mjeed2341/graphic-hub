@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Graphic Hub</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🎨 Graphic Hub</div>
+    <div class="actions">
+      <button id="langToggle" title="Language">🌐</button>
+      <button id="themeToggle" title="Theme">🌙</button>
+      <button id="favOpen" title="Favorites">⭐</button>
+    </div>
+  </header>
+
+  <nav class="tabs">
+    <button data-tab="frames" class="active">إطارات / Frames</button>
+    <button data-tab="palettes">ألوان / Palettes</button>
+    <button data-tab="fonts">خطوط / Fonts</button>
+    <button data-tab="templates">قوالب / Templates</button>
+  </nav>
+
+  <main>
+    <!-- Frames -->
+    <section id="tab-frames" class="tab active">
+      <div class="panel">
+        <h2 data-i18n="framesTitle">إطارات جاهزة</h2>
+        <div class="frame-tools">
+          <label class="file">
+            <input type="file" id="uploadImage" accept="image/*">
+            <span data-i18n="uploadImage">رفع صورة</span>
+          </label>
+          <button id="downloadFramed" disabled data-i18n="download">تحميل</button>
+          <button id="favFrame" disabled>⭐</button>
+        </div>
+        <div class="frame-list" id="frameList"></div>
+        <canvas id="frameCanvas" width="1000" height="1000"></canvas>
+      </div>
+    </section>
+
+    <!-- Palettes -->
+    <section id="tab-palettes" class="tab">
+      <div class="panel">
+        <h2 data-i18n="paletteTitle">مولّد ألوان</h2>
+        <div class="palette-tools">
+          <button id="genPalette" data-i18n="generate">توليد</button>
+          <button id="savePalette" data-i18n="save">حفظ</button>
+          <button id="downloadPalette" data-i18n="download">تحميل</button>
+        </div>
+        <div class="palette" id="palette"></div>
+      </div>
+    </section>
+
+    <!-- Fonts -->
+    <section id="tab-fonts" class="tab">
+      <div class="panel">
+        <h2 data-i18n="fontsTitle">معاينة خطوط</h2>
+        <p data-i18n="fontsHint">ارفع ملف خط (TTF/OTF) للمعاينة.</p>
+        <label class="file">
+          <input type="file" id="uploadFont" accept=".ttf,.otf">
+          <span data-i18n="uploadFont">رفع خط</span>
+        </label>
+        <input type="text" id="fontSample" value="The quick brown fox - سريع البديهة" />
+        <div id="fontPreview" class="font-preview">Aa</div>
+      </div>
+    </section>
+
+    <!-- Templates -->
+    <section id="tab-templates" class="tab">
+      <div class="panel">
+        <h2 data-i18n="templatesTitle">قوالب سريعة</h2>
+        <div class="tpl-controls">
+          <select id="tplSize">
+            <option value="1080x1080">Instagram Post 1080x1080</option>
+            <option value="1080x1920">Story 1080x1920</option>
+            <option value="1200x628">Twitter 1200x628</option>
+            <option value="2480x3508">A4 (300dpi-ish)</option>
+          </select>
+          <button id="makeTpl" data-i18n="create">إنشاء</button>
+          <button id="downloadTpl" disabled data-i18n="download">تحميل</button>
+          <button id="favTpl" disabled>⭐</button>
+        </div>
+        <canvas id="tplCanvas" width="1200" height="628"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <aside id="favoritesPanel" class="drawer">
+    <div class="drawer-header">
+      <h3 data-i18n="favorites">المفضلة</h3>
+      <button id="favClose">✖</button>
+    </div>
+    <div id="favList" class="fav-list"></div>
+  </aside>
+
+  <footer class="footer">© 2025 Graphic Hub</footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
